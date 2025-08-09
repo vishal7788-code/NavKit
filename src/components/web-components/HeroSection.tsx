@@ -5,7 +5,7 @@ import { motion, Variants } from "motion/react";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { ArrowRight, Github, Plane } from "lucide-react";
+import { ArrowRight, Github} from "lucide-react";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
