@@ -30,13 +30,13 @@ export default function Navbar() {
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
-  
-  const handleKeyDown = useCallback((e: any) => {
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
       setOpenCommand((prev) => !prev);
     }
   }, []);
+  
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
