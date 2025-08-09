@@ -5,7 +5,7 @@ import { motion, Variants } from "motion/react";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { ArrowRight, Github} from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -43,7 +43,6 @@ const HeroSection = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-           
             >
               <motion.div variants={itemVariants} className="mb-8">
                 <Badge
@@ -70,7 +69,7 @@ const HeroSection = () => {
               >
                 Stop wrestling with navigation bars. Get production-ready,
                 beautifully designed components that your users will love. Copy,
-                paste, ship. It's that simple.
+                paste, ship. It&apos;s that simple.
               </motion.p>
 
               <motion.div
@@ -148,7 +147,6 @@ const HeroSection = () => {
               </motion.div>
             </motion.div>
           </section>
-       
         </div>
       </div>
     </div>
