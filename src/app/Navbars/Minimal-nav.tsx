@@ -3,15 +3,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search, ShoppingBag, User } from "lucide-react";
-
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 
-interface MinimalNavProps {
-  className?: string;
-}
-
-export function MinimalNav({ className }: MinimalNavProps) {
+export function MinimalNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);

@@ -15,7 +15,7 @@ const PreviewSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-5">
+          <h2 className="text-4xl md:text-5xl font-bold ">
           Experience It in Motion
           </h2>
           <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">

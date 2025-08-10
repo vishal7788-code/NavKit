@@ -30,7 +30,7 @@ const HeroSection = () => {
   return (
     <div>
       <div>
-        <div className="relative min-h-screen md:min-h-[calc(100vh-4rem)] flex items-center justify-center mb-20 md:mt-0 my-7">
+        <div className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center md:mb-20 -mb-17">
           {/* Gradient Background */}
           <div
             className="fixed inset-0 z-0"
@@ -40,7 +40,7 @@ const HeroSection = () => {
             }}
           />
 
-          <section className="w-full max-w-7xl mx-auto px-4 pt-32 text-center z-50 absolute">
+          <section className="w-full max-w-7xl mx-auto px-4 md:pt-32 text-center z-50 absolute">
             <motion.div
               variants={containerVariants}
               initial="hidden"
