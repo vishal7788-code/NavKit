@@ -31,7 +31,7 @@ const Footer = () => {
             <div>
               <h3 className="font-semibold mb-4">Product</h3>
               <div className="space-y-3 text-muted-foreground">
-                <Link href="#" className="block hover:text-foreground transition-colors">Navbars</Link>
+                <Link href="/navbars" className="block hover:text-foreground transition-colors">Navbars</Link>
                 <Link href="#" className="block hover:text-foreground transition-colors">Templates</Link>
                 {/* <Link href="#" className="block hover:text-foreground transition-colors">Pricing</Link>
                 <Link href="#" className="block hover:text-foreground transition-colors">Changelog</Link> */}
@@ -40,7 +40,7 @@ const Footer = () => {
             <div>
               <h3 className="font-semibold mb-4">Support</h3>
               <div className="space-y-3 text-muted-foreground">
-                <Link href="#" className="block hover:text-foreground transition-colors">Documentation</Link>
+                <Link href="/docs" className="block hover:text-foreground transition-colors">Documentation</Link>
                 <Link href="#" className="block hover:text-foreground transition-colors">GitHub</Link>
                 {/* <Link href="#" className="block hover:text-foreground transition-colors">Discord</Link> */}
                 <Link href="#" className="block hover:text-foreground transition-colors">Contact</Link>

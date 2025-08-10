@@ -85,7 +85,7 @@ const FeatureSection: React.FC = () => {
   return (
     <div>
       {/* Features Section */}
-      <section className="w-full max-w-7xl mx-auto relative z-50  ">
+      <section className="w-full max-w-7xl mx-auto relative z-50 ">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -111,7 +111,7 @@ const FeatureSection: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {features.map(({ icon: Icon, colorClass, title, description,borderColor }, index) => (
-            <motion.div key={index} variants={itemVariants}>
+            <motion.div key={index} variants={itemVariants} className="px-7 md:px-2">
               <Card className={`h-full  transition-all duration-500 border ${borderColor} bg-card/50 backdrop-blur-sm group hover:scale-105 hover:bg-card/70`}>
                 <CardHeader className="pb-0">
                   <div

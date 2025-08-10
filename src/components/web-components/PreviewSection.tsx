@@ -1,16 +1,13 @@
 "use client"
 import React from "react";
 import { Card, CardContent, CardTitle } from "../ui/card";
-import { MinimalNav } from "@/app/Navbars/Minimal-nav";
 import { motion } from "motion/react";
-
-
-
+import { MinimalNav } from "@/app/Navbars/Minimal-nav";
 
 const PreviewSection = () => {
   return (
     <div>
-      <section className="w-full max-w-7xl mx-auto px-4 py-20 relative z-10">
+      <section className="w-full max-w-7xl mx-auto -mt-10 px-4 py-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -18,7 +15,7 @@ const PreviewSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-5">
           Experience It in Motion
           </h2>
           <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
