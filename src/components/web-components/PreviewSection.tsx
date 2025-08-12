@@ -2,7 +2,8 @@
 import React from "react";
 import { Card, CardContent, CardTitle } from "../ui/card";
 import { motion } from "motion/react";
-import { MinimalNav } from "@/app/Navbars/Minimal-nav";
+import { MinimalNav } from "@/components/Navbars/Minimal-nav";
+import { PreviewNav } from "./PreviewNavbar";
 
 const PreviewSection = () => {
   return (
@@ -15,7 +16,7 @@ const PreviewSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold ">
+          <h2 className="text-4xl md:text-5xl font-bold mb-5">
           Experience It in Motion
           </h2>
           <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
@@ -29,7 +30,7 @@ const PreviewSection = () => {
           className="max-w-5xl mx-auto"
         >
           <Card className="overflow-hidden border-0 shadow-2xl bg-card/50 backdrop-blur-lg hover:shadow-3xl transition-all duration-500">
-            <MinimalNav />
+          <PreviewNav/>
             <CardContent className="p-8 bg-gradient-to-r from-muted/20 rounded-lg to-muted/40">
               <CardTitle className="mb-3 text-2xl text-center">
                 Minimal Navigation Bar

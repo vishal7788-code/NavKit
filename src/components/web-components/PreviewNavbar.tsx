@@ -2,14 +2,16 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Search, ShoppingBag, User } from "lucide-react";
+import { Menu, X, Search, ShoppingBag, User, } from "lucide-react";
 import Link from "next/link";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeToggle } from "../theme-toggle";
 
-export function MinimalNav() {
+
+export function PreviewNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
+
 
   const navLinks = [
     { label: "Home", href: "#" },
@@ -17,6 +19,9 @@ export function MinimalNav() {
     { label: "Services", href: "#" },
     { label: "Contact", href: "#" },
   ];
+
+  
+
 
   return (
     <motion.nav
@@ -113,7 +118,7 @@ export function MinimalNav() {
             >
               <User className="w-5 h-5" />
             </motion.button>
-            <ThemeToggle />
+              <ThemeToggle/>
           </div>
 
           {/* Mobile menu button */}

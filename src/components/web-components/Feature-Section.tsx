@@ -85,7 +85,7 @@ const FeatureSection: React.FC = () => {
   return (
     <div>
       {/* Features Section */}
-      <section className="w-full max-w-7xl mx-auto relative z-50 ">
+      <section className="w-full max-w-7xl mx-auto relative z-50 bg- ">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,7 +93,7 @@ const FeatureSection: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-20 text-white "
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl dark:text-white text-black md:text-5xl font-bold mb-6">
           Simplify Your Development Workflow
           </h2>
           <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">

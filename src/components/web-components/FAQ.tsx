@@ -6,6 +6,9 @@ import {
 } from "@/components/ui/accordion";
 
 export function NavbarFAQ() {
+  
+  
+
   return (
     <section className="max-w-3xl mx-auto pb-8 px-4 relative z-10">
       <h2 className="text-3xl font-bold mb-6 text-center">

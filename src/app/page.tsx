@@ -6,7 +6,7 @@ import PreviewSection from "@/components/web-components/PreviewSection";
 
 export default function Home() {
   return (
-    <div className="bg-black">
+    <div className="dark:bg-black">
     <HeroSection/>
     <FeatureSection/>
     <PreviewSection/>

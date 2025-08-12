@@ -22,11 +22,17 @@ import {
   CommandEmpty,
   CommandSeparator,
 } from "@/components/ui/command";
+import { useTheme } from "next-themes";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  // const [isDark, setIsDark] = useState(false);
   const [openCommand, setOpenCommand] = useState(false);
+  const {theme, setTheme} = useTheme()
+
+  const handleTheme = () => {
+    setTheme(theme === "light" ? "dark":'light')
+  }
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -49,7 +55,7 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="fixed top-0 left-0 right-0 z-100 border-b border-white/20 bg-background/50 backdrop-blur-xl"
+        className="fixed top-0  left-0 right-0 z-100 mb-10 border-b border-white/20 bg-background/20 backdrop-blur-xl"
       >
         <nav className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
@@ -73,7 +79,7 @@ export default function Navbar() {
                   <Link
                     key={item}
                     href={`/${item}`}
-                    className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors relative group"
+                    className="text-sm font-medium text-foreground transition-colors relative group"
                   >
                     {item.charAt(0).toUpperCase() + item.slice(1)}
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -84,15 +90,15 @@ export default function Navbar() {
 
             <div className="flex items-center space-x-4">
               <div className="hidden lg:block relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-600 dark:text-muted-foreground" />
                 <Input
                   readOnly
                   onFocus={() => setOpenCommand(true)}
                   onClick={() => setOpenCommand(true)}
                   placeholder="Search Navbars...."
-                  className="pl-10 pr-16 cursor-pointer"
+                  className="pl-10 pr-16 cursor-pointer placeholder:text-neutral-600 boder-black dark:border-neutral-400  dark:placeholder:text-neutral-500"
                 />
-                <kbd className="absolute right-3 top-1/2 -translate-y-1/2 rounded border border-border/40 bg-background px-2 py-0.5 text-xs font-medium text-muted-foreground">
+                <kbd className="absolute right-3 top-1/2 -translate-y-1/2 rounded border dark:border-border/40  dark:bg-background px-2 text-neutral-600 py-0.5 text-xs font-medium dark:text-muted-foreground ">
                   Ctrl + K
                 </kbd>
               </div>
@@ -103,7 +109,7 @@ export default function Navbar() {
                   href="https://github.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="dark:text-white/80 text-black hover:text-foreground transition-colors"
                 >
                   <Github className="w-5 h-5" />
                 </a>
@@ -111,19 +117,19 @@ export default function Navbar() {
                   href="https://twitter.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="dark:text-white/80 text-black hover:text-foreground transition-colors"
                 >
                   <Twitter className="w-5 h-5" />
                 </a>
-
-                {/* Theme toggle */}
+{/* 
+                Theme toggle */}
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => setIsDark(!isDark)}
+                  onClick={handleTheme}
                   className="w-9 h-9 p-0"
                 >
-                  {isDark ? (
+                  {theme === "dark" ? (
                     <Sun className="w-4 h-4" />
                   ) : (
                     <Moon className="w-4 h-4" />
@@ -152,7 +158,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden border-t border-white/20 bg-background/95 backdrop-blur-xl"
+              className="md:hidden border-t border-white/20 bg-background/30 rounded-3xl backdrop-blur-xl"
             >
               <div className="px-4 py-6 space-y-4">
                 <div className="lg:hidden mb-4 relative">
@@ -160,7 +166,7 @@ export default function Navbar() {
                   <Input placeholder="Search components..." className="pl-10" />
                 </div>
 
-                {["components", "docs", "templates", "pricing"].map((item) => (
+                {["navbars", "docs"].map((item) => (
                   <Link
                     key={item}
                     href={`/${item}`}
@@ -190,10 +196,10 @@ export default function Navbar() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => setIsDark(!isDark)}
+                    onClick={handleTheme}
                     className="w-9 h-9 p-0"
                   >
-                    {isDark ? (
+                    {theme === "dark" ? (
                       <Sun className="w-4 h-4" />
                     ) : (
                       <Moon className="w-4 h-4" />
@@ -223,6 +229,7 @@ export default function Navbar() {
           </CommandGroup> */}
         </CommandList>
       </CommandDialog>
+      <div className="h-20"></div>
     </>
   );
 }

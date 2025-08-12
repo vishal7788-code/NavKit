@@ -1,9 +1,12 @@
+import CenteredLogoNav from '@/components/Navbars/CenteredLogoNav'
+import { MinimalNav } from '@/components/Navbars/Minimal-nav'
 import React from 'react'
 
 const page = () => {
   return (
-    <div className='text-green-500 flex justify-center items-center relative z-10'>
-      Coming Up Next
+    <div className='h-screen w-full space-y-5 mx-auto max-w-7xl'>
+<MinimalNav/>
+<CenteredLogoNav/>
     </div>
   )
 }
