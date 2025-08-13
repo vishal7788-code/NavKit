@@ -65,7 +65,7 @@ const HeroSection = () => {
         }`}>
           {/* Dynamic Gradient Background */}
           <div
-            className="absolute inset-0 z-0 transition-all duration-500"
+            className="fixed inset-0 z-0 transition-all duration-500"
             style={getBackgroundStyle()}
           />
           {/* Content Section */}

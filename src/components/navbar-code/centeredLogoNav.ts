@@ -140,8 +140,8 @@ const CenteredLogoNav = () => {
           </div>
 
           {/* Center logo */}
-          <motion.div className="flex-shrink-0">
-            <img src={logo} alt="Logo" className="w-32 h-auto" />
+          <motion.div className="flex-shrink-0 text-2xl font-semibold ">
+            <div>Your Logo Here</div>
           </motion.div>
 
           {/* Right links and button */}
@@ -172,8 +172,8 @@ const CenteredLogoNav = () => {
         <div className="lg:hidden">
           <div className="flex items-center justify-between">
            
-            <motion.div className={\`flex-1 flex justify-center \${mobileMenuOpen ? "hidden":"block"}\`}>
-              <img src={logo} alt="Logo" className="w-24 h-auto" />
+            <motion.div className={\`flex-1 flex justify-center text-2xl font-semibold  \${mobileMenuOpen ? "hidden":"block"}\`}>
+             <div>Your Logo Here</div>
             </motion.div>
 
             {/* Right side with menu button and gradient */}
