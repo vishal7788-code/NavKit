@@ -160,6 +160,7 @@ export function MinimalNav() {
                 >
                   <Link
                     href={link.href}
+                    onClick={() => setIsMenuOpen(false)} 
                     className="text-muted-foreground hover:text-foreground transition-colors py-2"
                   >
                     {link.label}

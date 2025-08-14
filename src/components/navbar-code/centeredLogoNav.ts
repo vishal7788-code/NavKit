@@ -115,6 +115,7 @@ const CenteredLogoNav = () => {
               >
                 <Link
                   href={link.href}
+
                   className="dark:text-gray-300 text-neutral-800 hover:text-black hover:dark:text-white transition-colors font-medium"
                 >
                   {link.label}

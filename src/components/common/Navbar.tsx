@@ -170,6 +170,7 @@ export default function Navbar() {
                   <Link
                     key={item}
                     href={`/${item}`}
+                    onClick={() => setIsMobileMenuOpen(false)} 
                     className="block text-sm font-medium text-foreground/80 hover:text-foreground transition-colors py-2"
                   >
                     {item.charAt(0).toUpperCase() + item.slice(1)}
