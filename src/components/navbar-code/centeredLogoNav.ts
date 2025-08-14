@@ -65,51 +65,10 @@ const CenteredLogoNav = () => {
     <motion.div
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      onMouseEnter={() => setShowCopyButton(true)}
-      onMouseLeave={() => setShowCopyButton(false)}
       transition={{ duration: 0.4, ease: "easeOut" }}
       className="dark:bg-neutral-900 bg-gray-200 h-auto p-4 rounded-3xl"
     >
-      <motion.div className="flex items-center justify-between mb-4">
-        <motion.h1
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="ml-3 text-2xl font-bold"
-        >
-          Centered Logo Nav
-        </motion.h1>
-        <AnimatePresence>
-          {showCopyButton && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: 10 }}
-              transition={{ duration: 0.2 }}
-              
-            >
-              <motion.button
-                whileTap={{ scale: 0.95 }}
-                onClick={handleCopyCode}
-                className="flex items-center space-x-2 text-white text-xs font-medium"
-              >
-                {copied ? (
-                  <div className="bg-green-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
-                    <Check className="w-3 h-3" />
-                    <span>Copied!</span>
-                  </div>
-                ) : (
-                  <div className="bg-blue-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
-                    <Copy className="w-3 h-3" />
-                    <span>Copy Code</span>
-                  </div>
-                )}
-              </motion.button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
-
+      
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

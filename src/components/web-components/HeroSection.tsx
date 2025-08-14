@@ -139,7 +139,7 @@ const HeroSection = () => {
                            }`}
                 >
                   <Link
-                    href="/components"
+                    href="/navbars"
                     className="group flex items-center justify-center text-white"
                   >
                     Explore Components

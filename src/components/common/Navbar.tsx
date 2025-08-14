@@ -75,7 +75,7 @@ export default function Navbar() {
               </Link>
 
               <div className="hidden md:flex items-center m-3 space-x-8">
-                {["navbars", "docs", "templates"].map((item) => (
+                {["navbars", "docs"].map((item) => (
                   <Link
                     key={item}
                     href={`/${item}`}
@@ -229,7 +229,7 @@ export default function Navbar() {
           </CommandGroup> */}
         </CommandList>
       </CommandDialog>
-      <div className="h-20"></div>
+      <div className="h-16 dark:bg-black"></div>
     </>
   );
 }

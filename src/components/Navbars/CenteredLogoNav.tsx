@@ -150,7 +150,7 @@ const CenteredLogoNav = () => {
           </div>
 
           {/* Center logo */}
-          <motion.div className="flex-shrink-0 text-2xl font-semibold">
+          <motion.div className="flex-shrink-0 text-2xl font-semibold ">
          <div>Your Logo Here</div>
           </motion.div>
 
@@ -179,12 +179,12 @@ const CenteredLogoNav = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="lg:hidden">
-          <div className="flex items-center justify-between">
-           
-            <motion.div className={`flex-1 flex justify-center text-2xl font-semibold ${mobileMenuOpen ? "hidden":"block"}`}>
-            <div>Your Logo Here</div>
+        <div className="lg:hidden flex items-center justify-between">
+            <motion.div className={`text-base mx-auto text-xl  font-bold ${mobileMenuOpen ? "hidden":"block"}`}>
+            <div className="">Your Logo Here</div>
             </motion.div>
+          <div className="flex items-center">
+           
 
             {/* Right side with menu button and gradient */}
             <div className="flex items-center w-full relative justify-end space-x-2">
@@ -205,7 +205,7 @@ const CenteredLogoNav = () => {
                   className="w-5 h-0.5 bg-current"
                 />
               </motion.button>
-              <div className={`${mobileMenuOpen ? "block" : "hidden"} bg-gradient-to-r from-transparent via-orange-500 to-purple-500 h-full w-18 fixed inset-0 left-[83%] rounded-r-lg`}></div>
+              <div className={`${mobileMenuOpen ? "block" : "hidden"} bg-gradient-to-r from-transparent via-orange-500 to-purple-500 h-full w-18 fixed inset-0 left-[83%]`}></div>
             </div>
           </div>
         </div>
