@@ -36,7 +36,7 @@ const HeroSection = () => {
     setMounted(true);
   }, []);
 
-  // Get the effective theme (resolvedTheme handles 'system' preference)
+ 
   const currentTheme = mounted ? resolvedTheme : 'dark';
   
   // Define theme-specific backgrounds

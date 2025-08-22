@@ -1,12 +1,34 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, ChevronRight, Check, Copy } from "lucide-react";
 import { flipHoverNav } from "../navbar-code/flipHoverNav";
 // ---------------- FlipLink Animation ----------------
 const DURATION = 0.25;
 const STAGGER = 0.025;
+
+
+type HoverItem = {
+  name: string;
+  desc: string;
+};
+
+type HoverSection = {
+  title: string;
+  items: HoverItem[];
+};
+
+type HoverContent = {
+  title: string;
+  subtitle: string;
+  sections: HoverSection[];
+};
+type NavLink = {
+  id: number;
+  name: string;
+  hoverContent: HoverContent;
+};
 
 const FlipLink = ({ children }: { children: string }) => {
   return (
@@ -75,7 +97,7 @@ const FlipHoverNav = () => {
     }
   };
 
-  const links = [
+  const links:NavLink[] = [
     {
       id: 1,
       name: "Link Name",
@@ -157,7 +179,7 @@ const FlipHoverNav = () => {
   ];
 
   // ---------------- Hover Card ----------------
-  const HoverCard = ({ content }: any) => {
+  const HoverCard = ({ content }:{content: HoverContent}) => {
     return (
       <motion.div
         initial={{ opacity: 0, y: 10, scale: 0.95 }}

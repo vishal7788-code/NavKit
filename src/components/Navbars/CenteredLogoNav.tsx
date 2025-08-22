@@ -14,7 +14,7 @@ const CenteredLogoNav = () => {
   const [copied, setIsCopied] = useState(false);
   const [showCopyButton, setShowCopyButton] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [ishover, setIshover] = useState(false)
+ 
 
   const leftLinks = [
     { label: "Link1", href: "#" },

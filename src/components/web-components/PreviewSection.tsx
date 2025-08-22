@@ -2,7 +2,6 @@
 import React from "react";
 import { Card, CardContent, CardTitle } from "../ui/card";
 import { motion } from "motion/react";
-import { MinimalNav } from "@/components/Navbars/Minimal-nav";
 import { PreviewNav } from "./PreviewNavbar";
 
 const PreviewSection = () => {

@@ -10,6 +10,26 @@ import { centeredLogoNav } from "../navbar-code/centeredLogoNav";
 const DURATION = 0.25;
 const STAGGER = 0.025;
 
+type HoverItem = {
+  name: string;
+  desc: string;
+};
+
+type HoverSection = {
+  title: string;
+  items: HoverItem[];
+};
+
+type HoverContent = {
+  title: string;
+  subtitle: string;
+  sections: HoverSection[];
+};
+type NavLink = {
+  id: number;
+  name: string;
+  hoverContent: HoverContent;
+};
 const FlipLink = ({ children }: { children: string }) => {
   return (
     <motion.span
@@ -66,7 +86,7 @@ const FlipHoverNav = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
 
-  const links = [
+  const links:NavLink[] = [
     {
       id: 1,
       name: "Link Name",
@@ -148,7 +168,7 @@ const FlipHoverNav = () => {
   ];
 
   // ---------------- Hover Card ----------------
-  const HoverCard = ({ content }: any) => {
+  const HoverCard = ({ content }: {content:HoverContent}) => {
     return (
       <motion.div
         initial={{ opacity: 0, y: 10, scale: 0.95 }}
