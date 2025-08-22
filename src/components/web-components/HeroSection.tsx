@@ -163,6 +163,7 @@ const HeroSection = () => {
                     href="https://github.com"
                     target="_blank"
                     rel="noopener noreferrer"
+                
                     className="group flex items-center justify-center"
                   >
                     <Github className={`mr-2 w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover:rotate-6 ${
@@ -180,14 +181,14 @@ const HeroSection = () => {
                          space-y-3 sm:space-y-0 sm:space-x-6 md:space-x-8
                          text-xs sm:text-sm"
               >
-                <div className={`flex items-center space-x-2 transition-colors duration-300 ${
+                {/* <div className={`flex items-center space-x-2 transition-colors duration-300 ${
                   currentTheme === 'light' ? 'text-slate-600' : 'text-gray-400'
                 }`}>
                   <div className={`w-2 h-2 rounded-full animate-pulse ${
                     currentTheme === 'light' ? 'bg-emerald-600' : 'bg-emerald-400'
                   }`}></div>
                   <span>Free & Open Source</span>
-                </div>
+                </div> */}
                 <div className={`flex items-center space-x-2 transition-colors duration-300 ${
                   currentTheme === 'light' ? 'text-slate-600' : 'text-gray-400'
                 }`}>

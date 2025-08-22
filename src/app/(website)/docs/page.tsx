@@ -251,6 +251,7 @@ export default function RootLayout({
                 </div>
               </div>
             </div>
+                <div className="text-sm italic text-center mt-5 text-gray-600">*Some animations may not appear in preview mode but work as expected during development.*</div>
           </div>
         </div>
 

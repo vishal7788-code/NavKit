@@ -65,7 +65,7 @@ export function MinimalNav() {
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={handleCopyCode}
-                className="flex items-center space-x-2 px-3 py-1.5 group text-white text-xs font-medium  transition-colors"
+                className="flex items-center cursor-pointer space-x-2 px-3 py-1.5 group text-white text-xs font-medium  transition-colors"
               >
                 {copied ? (
                   <div className="bg-green-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">

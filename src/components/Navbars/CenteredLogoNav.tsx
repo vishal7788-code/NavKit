@@ -101,7 +101,7 @@ const CenteredLogoNav = () => {
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={handleCopyCode}
-                className="flex items-center space-x-2 text-white text-xs font-medium"
+                className="flex items-center space-x-2 cursor-pointer text-white text-xs font-medium"
               >
                 {copied ? (
                   <div className="bg-green-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
@@ -179,109 +179,130 @@ const CenteredLogoNav = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="lg:hidden flex items-center justify-between">
-            <motion.div className={`text-base mx-auto text-xl  font-bold ${mobileMenuOpen ? "hidden":"block"}`}>
-            <div className="">Your Logo Here</div>
-            </motion.div>
-          <div className="flex items-center">
-           
+       {/* Mobile Navigation */}
+<div className="lg:hidden flex items-center w-full justify-center relative">
+  {/* Logo centered */}
+  {!mobileMenuOpen && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="text-base md:text-xl font-bold absolute left-1/2 -translate-x-1/2"
+    >
+      Your Logo Here
+    </motion.div>
+  )}
 
-            {/* Right side with menu button and gradient */}
-            <div className="flex items-center w-full relative justify-end space-x-2">
-              {/* Mobile menu button with two lines */}
-              <motion.button
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-md dark:text-white text-black flex flex-col z-10  items-center  space-y-1"
-              >
+  {/* Menu button */}
+  <div className="flex items-center w-full justify-end space-x-2">
+    <motion.button
+      whileTap={{ scale: 0.95 }}
+      onClick={() => setMobileMenuOpen(prev => !prev)}
+      className="p-2 rounded-md dark:text-white text-black flex flex-col z-50 items-center relative space-y-1"
+    >
+      <motion.div
+        animate={mobileMenuOpen ? { rotate: 45, y: 3 } : { rotate: 0, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="w-5 h-0.5 bg-current"
+      />
+      <motion.div
+        animate={mobileMenuOpen ? { rotate: -45, y: -3 } : { rotate: 0, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="w-5 h-0.5 bg-current"
+      />
+    </motion.button>
+
+    {/* Gradient with animation */}
+    <AnimatePresence>
+      {mobileMenuOpen && (
+        <motion.div
+          key="gradient"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 50 }}
+          transition={{ duration: 0.3 }}
+          className="bg-gradient-to-r from-transparent via-orange-500 to-purple-500   h-full w-18 fixed inset-0 left-[83%] z-40"
+        />
+      )}
+    </AnimatePresence>
+  </div>
+</div>
+
+{/* Mobile slide-in menu */}
+<AnimatePresence>
+  {mobileMenuOpen && (
+    <>
+      {/* Overlay */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="fixed inset-0 z-30 lg:hidden"
+        onClick={() => setMobileMenuOpen(false)}
+      />
+
+      {/* Slide-in menu */}
+      <motion.div
+        key="menu"
+        initial={{ x: "-100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "-100%" }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+        className="h-full w-80 max-w-[85vw] z-50 lg:hidden"
+      >
+        <div className="p-2 h-full">
+          {/* Mobile left links */}
+          <div className="space-y-6 mb-8">
+            <div className="space-y-2">
+              {leftLinks.map((link, i) => (
                 <motion.div
-                  animate={mobileMenuOpen ? { rotate: 45, y: 3 } : { rotate: 0, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="w-5 h-0.5 bg-current"
-                />
+                  key={link.label}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -30 }}
+                  transition={{ delay: i * 0.1 + 0.2 }}
+                >
+                  <a
+                    href={link.href}
+                    className="block dark:text-gray-300 text-4xl text-neutral-800 hover:text-black hover:dark:text-white transition-colors font-medium py-3 px-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile right links */}
+          <div className="space-y-6">
+            <div className="space-y-2">
+              {rightLinks.map((link, i) => (
                 <motion.div
-                  animate={mobileMenuOpen ? { rotate: -45, y: -3 } : { rotate: 0, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="w-5 h-0.5 bg-current"
-                />
-              </motion.button>
-              <div className={`${mobileMenuOpen ? "block" : "hidden"} bg-gradient-to-r from-transparent via-orange-500 to-purple-500 h-full w-18 fixed inset-0 left-[83%]`}></div>
+                  key={link.label}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -30 }}
+                  transition={{ delay: (leftLinks.length + i) * 0.1 + 0.2 }}
+                >
+                  <a
+                    href={link.href}
+                    className="block text-xl dark:text-gray-300 text-neutral-800 hover:text-black hover:dark:text-white transition-colors font-medium py-3 px-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
+      </motion.div>
+    </>
+  )}
+</AnimatePresence>
 
-        {/* Mobile slide-in menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <>
-              {/* Overlay */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="fixed inset-0   z-40 lg:hidden"
-                onClick={() => setMobileMenuOpen(false)}
-              />
-
-              {/* Slide-in menu */}
-              <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "-100%" }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className=" h-full w-80 max-w-[85vw]  z-50  lg:hidden "
-              >
-                <div className="p-2 h-full ">
-                  {/* Mobile left links */}
-                  <div className="space-y-6 mb-8">
-                    <div className="space-y-2">
-                      {leftLinks.map((link, i) => (
-                        <motion.div
-                          key={link.label}
-                          initial={{ opacity: 0, x: -30 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.1 + 0.2 }}
-                        >
-                          <a
-                            href={link.href}
-                            className="block  dark:text-gray-300 text-4xl text-neutral-800 hover:text-black hover:dark:text-white transition-colors font-medium py-3 px-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {link.label}
-                          </a>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Mobile right links */}
-                  <div className="space-y-6 ">
-                    
-                    <div className="space-y-2">
-                      {rightLinks.map((link, i) => (
-                        <motion.div
-                          key={link.label}
-                          initial={{ opacity: 0, x: -30 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: (leftLinks.length + i) * 0.1 + 0.2 }}
-                        >
-                          <a
-                            href={link.href}
-                            className="block text-xl dark:text-gray-300 text-neutral-800 hover:text-black hover:dark:text-white transition-colors font-medium py-3 px-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {link.label}
-                          </a>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
       </motion.nav>
     </motion.div>
   );
