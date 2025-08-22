@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, ChevronRight, Check, Copy } from "lucide-react";
 import { flipHoverNav } from "../navbar-code/flipHoverNav";
@@ -199,13 +199,13 @@ const FlipHoverNav = () => {
         </div>
 
         <div className="space-y-8">
-          {content.sections.map((section: any, idx: number) => (
+          {content.sections.map((section: HoverSection, idx: number) => (
             <div key={idx}>
               <h4 className="text-sm font-medium text-gray-400 mb-4 uppercase tracking-wider">
                 {section.title}
               </h4>
               <div className="grid grid-cols-2 gap-6">
-                {section.items.map((item: any, itemIdx: number) => (
+                {section.items.map((item: HoverItem, itemIdx: number) => (
                   <div key={itemIdx} className="group cursor-pointer">
                     <div className="flex gap-3">
                       <div className="w-5 h-5 bg-gray-800 rounded-full flex items-center justify-center mt-0.5 group-hover:bg-gray-950 transition-colors">
