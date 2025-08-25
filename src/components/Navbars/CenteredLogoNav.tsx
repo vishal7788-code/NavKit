@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Copy} from "lucide-react";
 import Link from "next/link";
-import { centeredLogoNav } from "../navbar-code/centeredLogoNav";
+import { centeredLogoNav, centeredLogoNavJs } from "../navbar-code/centeredLogoNav";
 
 interface FlipButtonProps {
     children: React.ReactNode;
@@ -11,7 +11,8 @@ interface FlipButtonProps {
   }
 
 const CenteredLogoNav = () => {
-  const [copied, setIsCopied] = useState(false);
+  const [tsCopied, setTsCopied] = useState(false);
+  const [jsCopied, setJsCopied] = useState(false);
   const [showCopyButton, setShowCopyButton] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
  
@@ -27,16 +28,25 @@ const CenteredLogoNav = () => {
     { label: "Link6", href: "#" },
   ];
   
-  const handleCopyCode = async () => {
-    try {
-      await navigator.clipboard.writeText(centeredLogoNav);
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy code:", err);
-    }
-  };
+ const handleCopyCode = async () => {
+     try {
+       await navigator.clipboard.writeText(centeredLogoNav);
+       setTsCopied(true);
+       setTimeout(() => setTsCopied(false), 2000);
+     } catch (err) {
+       console.error("Failed to copy code:", err);
+     }
+   };
   
+    const handleCopyJsCode = async () => {
+      try {
+        await navigator.clipboard.writeText(centeredLogoNavJs);
+        setJsCopied(true);
+        setTimeout(() => setJsCopied(false), 2000);
+      } catch (err) {
+        console.error("Failed to copy code:", err);
+      }
+    };
   const FlipButton: React.FC<FlipButtonProps> = ({ children, hoverText }) => {
     const [isHovered, setIsHovered] = useState(false);
   
@@ -89,21 +99,21 @@ const CenteredLogoNav = () => {
         >
           Centered Logo Nav
         </motion.h1>
-        <AnimatePresence>
+      <AnimatePresence>
           {showCopyButton && (
             <motion.div
               initial={{ opacity: 0, scale: 0.8, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: 10 }}
               transition={{ duration: 0.2 }}
-              
+              className="flex"
             >
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={handleCopyCode}
-                className="flex items-center space-x-2 cursor-pointer text-white text-xs font-medium"
+                className="flex items-center cursor-pointer space-x-2 px-3 py-1.5 group text-white text-xs font-medium  transition-colors"
               >
-                {copied ? (
+                {tsCopied ? (
                   <div className="bg-green-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
                     <Check className="w-3 h-3" />
                     <span>Copied!</span>
@@ -111,7 +121,24 @@ const CenteredLogoNav = () => {
                 ) : (
                   <div className="bg-blue-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
                     <Copy className="w-3 h-3" />
-                    <span>Copy Code</span>
+                    <span>Copy TS Code</span>
+                  </div>
+                )}
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={handleCopyJsCode}
+                className="flex items-center cursor-pointer space-x-2 px-3 py-1.5 group text-white text-xs font-medium  transition-colors"
+              >
+                {jsCopied ? (
+                  <div className="bg-green-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
+                    <Check className="w-3 h-3" />
+                    <span>Copied!</span>
+                  </div>
+                ) : (
+                  <div className="bg-yellow-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
+                    <Copy className="w-3 h-3" />
+                    <span>Copy JS Code</span>
                   </div>
                 )}
               </motion.button>

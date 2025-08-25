@@ -84,14 +84,24 @@ const FlipLink = ({ children }: { children: string }) => {
 const FlipHoverNav = () => {
   const [hoveredLink, setHoveredLink] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [copied, setIsCopied] = useState(false);
+ const [tsCopied, setTsCopied] = useState(false);
+  const [jsCopied, setJsCopied] = useState(false);
   const [showCopyButton, setShowCopyButton] = useState(false);
 
   const handleCopyCode = async () => {
     try {
       await navigator.clipboard.writeText(flipHoverNav);
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000);
+      setTsCopied(true);
+      setTimeout(() => setTsCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy code:", err);
+    }
+  };
+  const handleCopyJsCode = async () => {
+    try {
+      await navigator.clipboard.writeText(flipHoverNav);
+      setJsCopied(true);
+      setTimeout(() => setJsCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy code:", err);
     }
@@ -265,7 +275,7 @@ const FlipHoverNav = () => {
       animate={{ y: 0, opacity: 1 }}
      onMouseEnter={() => setShowCopyButton(true)}
       onMouseLeave={() => setShowCopyButton(false)}
-    className="dark:bg-neutral-900 bg-gray-200  rounded-3xl py-4 sticky top-0 z-40">
+    className="dark:bg-neutral-900 bg-gray-200  rounded-3xl py-4 relative z-40">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-4">
         <motion.div className="flex items-center justify-between mb-4">
           <motion.h1
@@ -276,34 +286,52 @@ const FlipHoverNav = () => {
           >
           Flip Hover Navbar
           </motion.h1>
-          <AnimatePresence>
-            {showCopyButton && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                transition={{ duration: 0.2 }}
+            <AnimatePresence>
+          {showCopyButton && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="flex"
+            >
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={handleCopyCode}
+                className="flex items-center cursor-pointer space-x-2 px-3 group text-white text-xs font-medium  transition-colors"
               >
-                <motion.button
-                  whileTap={{ scale: 0.95 }}
-                  onClick={handleCopyCode}
-                  className="flex items-center cursor-pointer space-x-2 text-white text-xs font-medium"
-                >
-                  {copied ? (
-                    <div className="bg-green-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
-                      <Check className="w-3 h-3" />
-                      <span>Copied!</span>
-                    </div>
-                  ) : (
-                    <div className="bg-blue-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
-                      <Copy className="w-3 h-3" />
-                      <span>Copy Code</span>
-                    </div>
-                  )}
-                </motion.button>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                {tsCopied ? (
+                  <div className="bg-green-500 flex items-center space-x-2 px-3 py-1 rounded-3xl">
+                    <Check className="w-3 h-3" />
+                    <span>Copied!</span>
+                  </div>
+                ) : (
+                  <div className="bg-blue-500 flex items-center space-x-2 px-3 py-1 rounded-3xl">
+                    <Copy className="w-3 h-3" />
+                    <span>Copy TS Code</span>
+                  </div>
+                )}
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={handleCopyJsCode}
+                className="flex items-center cursor-pointer space-x-2 px-3 py-1 group text-white text-xs font-medium  transition-colors"
+              >
+                {jsCopied ? (
+                  <div className="bg-green-500 flex items-center space-x-2 px-3 py-1 rounded-3xl">
+                    <Check className="w-3 h-3" />
+                    <span>Copied!</span>
+                  </div>
+                ) : (
+                  <div className="bg-yellow-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
+                    <Copy className="w-3 h-3" />
+                    <span>Copy JS Code</span>
+                  </div>
+                )}
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
         </motion.div>
         <div className="flex justify-between p-4 bg-white items-center h-16">
           {/* Logo */}

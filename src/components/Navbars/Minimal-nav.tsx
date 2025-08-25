@@ -5,8 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search, ShoppingBag, User, Check, Copy } from "lucide-react";
 import Link from "next/link";
 import { ThemeToggle } from "../theme-toggle";
-import minimalNav from "../navbar-code/minimal-nav";
+
 import {Inter} from "next/font/google"
+import { minimalNav, minimalNavJs } from "../navbar-code/minimal-nav";
 const inter = Inter({
 variable:"--font-inter",
 subsets:["latin"]
@@ -16,7 +17,8 @@ export function MinimalNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [tsCopied, setTsCopied] = useState(false);
+  const [jsCopied, setJsCopied] = useState(false);
   const [showCopyButton, setShowCopyButton] = useState(false);
 
   const navLinks = [
@@ -29,8 +31,17 @@ export function MinimalNav() {
   const handleCopyCode = async () => {
     try {
       await navigator.clipboard.writeText(minimalNav);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setTsCopied(true);
+      setTimeout(() => setTsCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy code:", err);
+    }
+  };
+  const handleCopyJsCode = async () => {
+    try {
+      await navigator.clipboard.writeText(minimalNavJs);
+      setJsCopied(true);
+      setTimeout(() => setJsCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy code:", err);
     }
@@ -52,7 +63,7 @@ export function MinimalNav() {
         transition={{ duration: 0.4, ease: "easeOut" }}
         className="ml-3 my-2 text-2xl font-bold"
       >
-        Minimal nav: OG Navbar{" "}
+      OG Navbar{" "}
       </motion.h1>
       <AnimatePresence>
           {showCopyButton && (
@@ -61,13 +72,14 @@ export function MinimalNav() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: 10 }}
               transition={{ duration: 0.2 }}
+              className="flex"
             >
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={handleCopyCode}
                 className="flex items-center cursor-pointer space-x-2 px-3 py-1.5 group text-white text-xs font-medium  transition-colors"
               >
-                {copied ? (
+                {tsCopied ? (
                   <div className="bg-green-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
                     <Check className="w-3 h-3" />
                     <span>Copied!</span>
@@ -75,7 +87,24 @@ export function MinimalNav() {
                 ) : (
                   <div className="bg-blue-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
                     <Copy className="w-3 h-3" />
-                    <span>Copy Code</span>
+                    <span>Copy TS Code</span>
+                  </div>
+                )}
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={handleCopyJsCode}
+                className="flex items-center cursor-pointer space-x-2 px-3 py-1.5 group text-white text-xs font-medium  transition-colors"
+              >
+                {jsCopied ? (
+                  <div className="bg-green-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
+                    <Check className="w-3 h-3" />
+                    <span>Copied!</span>
+                  </div>
+                ) : (
+                  <div className="bg-yellow-500 flex items-center space-x-2 px-3 py-1.5 rounded-3xl">
+                    <Copy className="w-3 h-3" />
+                    <span>Copy JS Code</span>
                   </div>
                 )}
               </motion.button>

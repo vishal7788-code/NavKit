@@ -87,7 +87,7 @@ const HeroSection = () => {
                                : 'bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border-blue-400/30 text-blue-200'
                            }`}
                 >
-                  ⚡ Premium Navigation Components
+                  ⚡ 3+ Premium Navigation Components
                 </Badge>
               </motion.div>
 
