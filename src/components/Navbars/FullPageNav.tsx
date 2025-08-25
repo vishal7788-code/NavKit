@@ -182,7 +182,7 @@ const FullPageNav = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-60 w-full transition-colors duration-300 dark:bg-black bg-white"
+            className="fixed rounded-2xl md:rounded-none bg-white inset-0 z-60 w-full md:h-full h-1/2 transition-colors duration-300 dark:bg-black "
             initial={{ y: "-100%" }}
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
@@ -250,14 +250,16 @@ const FullPageNav = () => {
                     >
                       <Link
                         href={item.href}
-                        className="flex items-center justify-center gap-8 text-3xl text-center md:text-4xl lg:text-5xl font-light dark:text-gray-500 dark:hover:text-white text-gray-400 hover:text-black duration-300 transition-all ease-in-out hover:translate-x-5"
+                        className="flex items-center justify-center gap-8 text-5xl text-center md:text-4xl lg:text-5xl font-light dark:text-gray-500 dark:hover:text-white text-gray-400 hover:text-black duration-300 transition-all ease-in-out hover:translate-x-5"
                         onClick={toggleMenu}
                       >
                         {item.label}
                         <ChevronRight />
                       </Link>
+
                     </motion.div>
-                  ))}
+                    
+                ))}
                 </div>
               </div>
 
@@ -297,6 +299,7 @@ const FullPageNav = () => {
             </div>
           </motion.div>
         )}
+    
       </AnimatePresence>
     </motion.div>
   );
