@@ -72,7 +72,7 @@ const FullPageNav = () => {
       onMouseEnter={() => setShowCopyButton(true)}
       onMouseLeave={() => setShowCopyButton(false)}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="dark:bg-neutral-900 bg-gray-200 h-auto p-4 rounded-3xl z-40 relative"
+      className="dark:bg-neutral-900 bg-gray-200 h-auto p-4 rounded-3xl  relative"
     >
       <motion.div className="flex items-center justify-between mb-4">
         <motion.h1
